@@ -1,4 +1,4 @@
-class RecipeingredientSerializer < ActiveModel::Serializer
-  attributes :id, :favorites 
+# class RecipeingredientSerializer < ActiveModel::Serializer
+#   attributes :id, :favorites 
   
-end
+# end

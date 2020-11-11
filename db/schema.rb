@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_214325) do
+ActiveRecord::Schema.define(version: 2020_11_11_174021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,16 +21,8 @@ ActiveRecord::Schema.define(version: 2020_11_10_214325) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "unit"
-  end
-
-  create_table "recipeingredients", force: :cascade do |t|
     t.bigint "recipe_id", null: false
-    t.bigint "ingredient_id", null: false
-    t.boolean "favorites"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["ingredient_id"], name: "index_recipeingredients_on_ingredient_id"
-    t.index ["recipe_id"], name: "index_recipeingredients_on_recipe_id"
+    t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -40,8 +32,8 @@ ActiveRecord::Schema.define(version: 2020_11_10_214325) do
     t.string "instructions"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "comment"
   end
 
-  add_foreign_key "recipeingredients", "ingredients"
-  add_foreign_key "recipeingredients", "recipes"
+  add_foreign_key "ingredients", "recipes"
 end
